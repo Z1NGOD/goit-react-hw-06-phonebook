@@ -1,26 +1,36 @@
-import { useContext } from 'react';
 import { ContactsList, ContactItem } from './Contacts.styled';
 import { Btn } from 'ui/Btn.styled';
-import { Context } from 'components/Context/StateContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/actions';
+import { useEffect } from 'react';
 const Contacts = () => {
-  const { contacts, setContacts, filter } = useContext(Context);
+  const {contacts} = useSelector(state => state.contacts);
+  const {filter} = useSelector(state => state.filter);
+  const dispatch = useDispatch();
 
-  const deleteContact = id => {
-    setContacts(prevState => prevState.filter(contact => contact.id !== id));
+  const deleteContactHandler = id => {
+    dispatch(deleteContact(id));
   };
+
   const getFilteredContacts = () => {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
   };
+
   const filteredContacts = getFilteredContacts();
+  
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+  
   return (
     <ContactsList>
       {filteredContacts.length > 0 ? (
         filteredContacts.map(({ id, name, number }) => (
           <ContactItem key={id}>
             {name}: {number}
-            <Btn onClick={() => deleteContact(id)}>Delete</Btn>
+            <Btn onClick={() => deleteContactHandler(id)}>Delete</Btn>
           </ContactItem>
         ))
       ) : (
