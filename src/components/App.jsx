@@ -1,16 +1,28 @@
-export const App = () => {
+import React, { useContext, useEffect } from 'react';
+import { Container } from 'ui/Container.styled';
+import PhoneBook from './PhoneBook/PhoneBook';
+import Contacts from './Contacts/Contacts';
+import Filter from './Filter/Filter';
+import { Context } from './Context/StateContext';
+
+export function App() {
+  const { contacts, setContacts } = useContext(Context);
+
+  useEffect(() => {
+    const contactsFromLS = JSON.parse(localStorage.getItem('contacts')) || [];
+    setContacts(contactsFromLS);
+  }, [setContacts]);
+
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Container>
+      <PhoneBook />
+      <Filter />
+      <Contacts />
+    </Container>
   );
-};
+}
+
