@@ -3,9 +3,8 @@ import { changeFilter } from 'redux/actions';
 import { FilterInput } from './Filter.styled';
 import { Text } from 'ui/Text.styled';
 
-
 function Filter() {
-  const {filter} = useSelector(state => state.filter);
+  const { filter } = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const onChangeHandler = e => {

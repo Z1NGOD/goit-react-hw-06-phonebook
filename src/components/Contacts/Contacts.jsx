@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/actions';
 import { useEffect } from 'react';
 const Contacts = () => {
-  const {contacts} = useSelector(state => state.contacts);
-  const {filter} = useSelector(state => state.filter);
+  const { contacts } = useSelector(state => state.contacts);
+  const { filter } = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const deleteContactHandler = id => {
@@ -19,11 +19,11 @@ const Contacts = () => {
   };
 
   const filteredContacts = getFilteredContacts();
-  
+
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-  
+
   return (
     <ContactsList>
       {filteredContacts.length > 0 ? (
