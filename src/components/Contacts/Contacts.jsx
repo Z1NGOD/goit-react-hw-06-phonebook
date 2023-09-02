@@ -1,8 +1,8 @@
 import { ContactsList, ContactItem } from './Contacts.styled';
 import { Btn } from 'ui/Btn.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/actions';
-import { useEffect } from 'react';
+import { deleteContact } from 'redux/slice';
+
 const Contacts = () => {
   const { contacts } = useSelector(state => state.contacts);
   const { filter } = useSelector(state => state.filter);
@@ -19,10 +19,6 @@ const Contacts = () => {
   };
 
   const filteredContacts = getFilteredContacts();
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   return (
     <ContactsList>

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/actions';
+import { changeFilter } from 'redux/slice';
 import { FilterInput } from './Filter.styled';
 import { Text } from 'ui/Text.styled';
 
