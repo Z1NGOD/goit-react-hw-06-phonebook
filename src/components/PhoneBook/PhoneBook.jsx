@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/actions';
 import { Btn } from 'ui/Btn.styled';
 import { MainText, Input, Form } from './Phonebook.styled';
-
+import { nanoid } from 'nanoid';
 export default function PhoneBook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -26,10 +26,12 @@ export default function PhoneBook() {
       return;
     }
 
-    dispatch(addContacts(name, number));
+    const id = nanoid(); 
+    dispatch(addContacts({ id, name, number }));
     setName('');
     setNumber('');
   };
+
 
   const handleChange = e => {
     const { name, value } = e.target;
