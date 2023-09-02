@@ -2,25 +2,25 @@ import styled from "@emotion/styled";
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 360px;
   margin: 0 auto;
 `;
 
 const MainText = styled.h1`
-  font-size: 48px;
-  color: #333;
-  margin-bottom: 30px;
+  font-size: 42px;
+  color: #555;
+  margin-bottom: 24px;
 `;
 
 const Input = styled.input`
-  padding: 16px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  font-size: 18px;
+  padding: 14px;
+  border: 2px solid #aaa;
+  border-radius: 6px;
+  font-size: 16px;
   outline: none;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   ::placeholder {
-    color: #999;
+    color: #888;
   }
 `;
 

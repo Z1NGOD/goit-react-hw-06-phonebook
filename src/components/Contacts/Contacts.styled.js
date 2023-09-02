@@ -2,20 +2,20 @@ import styled from "@emotion/styled";
 const ContactsList = styled.ul`
   list-style: none;
   padding: 0;
-  margin-top: 24px;
+  margin-top: 16px;
 `;
 
 const ContactItem = styled.li`
-  padding: 16px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #f0f0f0;
   display: flex;
   align-items: center;
-  gap: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 
   &:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 `;
 
